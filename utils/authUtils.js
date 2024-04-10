@@ -1,6 +1,6 @@
 // require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const jwtConfig = require('../../презы/code/2phase/221 bcrypt cookie JWT IDOR/config/jwtConfig');
+const jwtConfig = require('../config/jwtConfig');
 
 const generateTokens = (payload) => ({
   accessToken: jwt.sign(payload, 'access', { expiresIn: jwtConfig.access.expiresIn }),
