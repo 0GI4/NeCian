@@ -1,7 +1,7 @@
 const React = require("react");
 const Layout = require("../Layout");
 const AdvertismentCard = require("../ui/AdvertismentCard");
-const FilterHouse = require('./FilterHouse')
+const FilterHouse = require('../ui/FilterHouse')
 
 module.exports = function AdsList({ title, user, advertisments }) {
   return (
