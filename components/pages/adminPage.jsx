@@ -1,7 +1,8 @@
 const React = require('react');
-const Layout = require('./Layout');
+const Layout = require('../Layout');
 const AddAdv = require('./addAdv');
 const AdvertismentCard = require('./AdvertismentCard');
+
 
 module.exports = function adminPage({
   advertisment, title, category, user, image,

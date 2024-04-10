@@ -1,6 +1,6 @@
 const React = require('react');
-const NavBar = require('./Navbar');
-const Footer = require('./Footer');
+const NavBar = require('./ui/Navbar');
+const Footer = require('./ui/Footer');
 
 module.exports = function Layout({ title, children, user }) {
   return (
@@ -10,6 +10,7 @@ module.exports = function Layout({ title, children, user }) {
         <link rel="stylesheet" href="/style/navbar.css" />
         <link rel="stylesheet" href="/style/style.css" />
         <script defer src="/scripts/authScripts.js" />
+        <script defer src="/scripts/filterHouse.js" />
       </head>
       <body>
         <NavBar user={user} />

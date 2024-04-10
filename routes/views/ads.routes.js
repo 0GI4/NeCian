@@ -1,18 +1,31 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const { Advertisment, Category } = require("../../db/models");
+const AdsList = require("../../components/pages/AdsList");
 
-const AdsList = require('../../components/AdsList');
+router.get("/", async (req, res) => {
+  try {
+    const advertisments = await Advertisment.findAll({
+      order: [["id", "ASC"]],
+    });
+    const categories = await Category.findAll();
+    const document = res.renderComponent(AdsList, {
+      title: "Объявления",
+      advertisments,
+      categories,
+    });
+    res.send(document);
+  } catch (error) {
+    console.error("Ошибка при получении списка объявлений:", error);
+    res.status(500).send("Внутренняя ошибка сервера");
+  }
+});
 
-router.get('/', async (req, res) => {
-  /* try { */
-
-  const document = res.renderComponent(AdsList, {
-    title: 'Объявления',
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const advertismentList = await Advertisment.findAll({
+    where: { categoryId: id },
   });
-  res.send(document);
-  /* } catch (error) {
-    console.error('Ошибка при получении списка объявлений:', error);
-    res.status(500).send('Внутренняя ошибка сервера');
-  } */
+  res.send(advertismentList)
 });
 
 module.exports = router;
