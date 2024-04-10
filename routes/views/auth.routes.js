@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const LogIn = require('../../components/LogIn');
-const Registration = require('../../components/Registration');
+const LogIn = require('../../components/pages/LogIn');
+const Registration = require('../../components/pages/Registration');
 const jwtConfig = require('../../config/jwtConfig');
 
 router.get('/registration', (req, res) => {
