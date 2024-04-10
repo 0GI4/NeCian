@@ -10,12 +10,6 @@ router.get('/registration', (req, res) => {
   res.send(html);
 });
 
-router.get('/registration/out', (req, res) => {
-  res.clearCookie(jwtConfig.refresh.type).clearCookie(jwtConfig.access.type);
-  res.locals.user = undefined;
-  res.redirect('/');
-});
-
 router.get('/login', (req, res) => {
   const html = res.renderComponent(LogIn, {
     title: 'Log in',
