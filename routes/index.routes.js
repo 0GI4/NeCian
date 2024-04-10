@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const mainRouter = require('./views/ads.routes');
-const adminRouter = require('./views/admin.routers.js')
 /* const announcementsApiRouter = require('./api/announcementsApi.routes'); */
 const authApiRouter = require('./api/authApi.routes');
 const adminRouter = require('./views/admin.routes')
