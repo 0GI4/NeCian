@@ -11,9 +11,12 @@ module.exports = function Footer() {
         ООО «Айриэлтор», email: support@cian.ru. На информационном ресурсе применяются Рекомендательные технологии.
       </p>
       <div>
-        <img src="../public/img/logo.png" alt="" />
+        <img src="/img/logo.png" alt="" />
         <p>Адрес офиса: Лигоский проспект 140, 7 этаж</p>
-        <p>Почта для связи: <a href="mailto:mr.pasha6555@gmail.com">mr.pasha6555@gmail.com</a></p>
+        <p>
+          Почта для связи:
+          <a href="mailto:mr.pasha6555@gmail.com">mr.pasha6555@gmail.com</a>
+        </p>
       </div>
     </div>
   );
