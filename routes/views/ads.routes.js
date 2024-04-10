@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
   const advertismentList = await Advertisment.findAll({
     where: { categoryId: id },
   });
-  res.send(advertismentList)
+  res.send(advertismentList);
 });
 
 module.exports = router;
