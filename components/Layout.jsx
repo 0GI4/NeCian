@@ -1,6 +1,6 @@
 const React = require('react');
-const NavBar = require('./Navbar');
-const Footer = require('./Footer');
+const NavBar = require('./ui/Navbar');
+const Footer = require('./ui/Footer');
 
 module.exports = function Layout({ title, children, user }) {
   return (
