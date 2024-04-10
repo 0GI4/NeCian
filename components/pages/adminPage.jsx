@@ -19,6 +19,7 @@ module.exports = function adminPage({
           >
             <AdvertismentCard advertisment={el} />
             { user && <button className="del">Удалить</button>}
+            { user && <button className="del upd">Изменить</button>}
           </div>
         ))}
       </div>
