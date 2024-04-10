@@ -1,6 +1,6 @@
 const React = require("react");
 
-function FilterHouse() {
+function FilterHouse({ categories }) {
   return (
     <form className="FormFilter">
       <select className="FilterHouse">
