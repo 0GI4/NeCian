@@ -9,7 +9,7 @@ module.exports = function AdvertismentCard({ advertisment, images }) {
     >
       <div>
         <a href={`/advertisments/${advertisment.id}`}>
-          {/* <img src={images.photo} /> */}
+          <img src={images.photo} />
           <p>{advertisment.price} ₽</p>
           <h2>
             <em>{advertisment.description}</em>

@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class Advertisment extends Model {
     static associate({ Category, Like, Image }) {
       this.hasMany(Like, { foreignKey: 'adsId' });
-      this.hasMany(Image, { foreignKey: 'adsId' });
+      this.hasMany(Image, { as: 'images', foreignKey: 'adsId' });
       this.belongsTo(Category, { foreignKey: 'categoryId' });
     }
   }
