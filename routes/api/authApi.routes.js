@@ -81,4 +81,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/logout', (req, res) => {
+  res.clearCookie(jwtConfig.refresh.type).clearCookie(jwtConfig.access.type);
+  res.locals.user = undefined;
+  res.redirect('/');
+});
+
 module.exports = router;
