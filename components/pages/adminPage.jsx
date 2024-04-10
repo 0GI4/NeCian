@@ -1,20 +1,24 @@
 const React = require('react');
 const Layout = require('../Layout');
-const AddAdv = require('./addAdv');
-const AdvertismentCard = require('./AdvertismentCard');
-
+const AddAdv = require('../ui/addAdv');
+const AdvertismentCard = require('../ui/AdvertismentCard');
 
 module.exports = function adminPage({
-  advertisment, title, category, user, image,
+  advertisments, title, user, categories,
 }) {
   return (
     <Layout title={title} user={user}>
-      <AddAdv category={category} user={user} />
+      <AddAdv user={user}/* categories={categories} */ />
       <div className="listAdmin">
-        {advertisment.map((el) => (
-          <div className="card">
-            <AdvertismentCard advertisment={el} image={image} />
-            {user && user.isAdmin && <button className="del">Удалить</button>}
+        {advertisments.map((el) => (
+          <div
+            key={el.id}
+            className="card"
+            data-id={advertisments.id}
+            style={{ width: '18rem', margin: '20px' }}
+          >
+            <AdvertismentCard advertisment={el} />
+            { user && <button className="del">Удалить</button>}
           </div>
         ))}
       </div>
