@@ -1,0 +1,36 @@
+{
+  "name": "NeCian",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js --ext js,json,jsx",
+    "db": "sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/register": "^7.23.7",
+    "bcryptjs": "^2.4.3",
+    "cli": "^1.0.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.5",
+    "pg-hstore": "^2.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sequelize": "^6.37.2",
+    "sequelize-cli": "^6.6.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "nodemon": "^3.1.0"
+  }
+}
