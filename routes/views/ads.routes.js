@@ -4,7 +4,8 @@ const AdsList = require("../../components/pages/AdsList");
 
 router.get("/", async (req, res) => {
   try {
-    const advertisments = await Advertisment.findAll(
+    const baseUrl = process.env.BASE_URL || "http://localhost:5000";
+    let advertisments = await Advertisment.findAll(
       {
         include: [
           {
@@ -17,6 +18,13 @@ router.get("/", async (req, res) => {
         order: [["id", "ASC"]],
       }
     );
+    advertisments = advertisments.map((ad) => ad.toJSON());
+
+    advertisments.forEach((ad) => {
+      ad.images.forEach((image) => {
+        image.photo = `${baseUrl}/${image.photo}`;
+      });
+    });
     const categories = await Category.findAll();
     const document = res.renderComponent(AdsList, {
       title: "Объявления",
@@ -31,12 +39,11 @@ router.get("/", async (req, res) => {
 });
 
 /* router.get("/:id", async (req, res) => {
-/* router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const advertismentList = await Advertisment.findAll({
     where: { categoryId: id },
   });
-  res.send(advertismentList)
-});
+  res.send(advertismentList);
+}); */
 
 module.exports = router;
