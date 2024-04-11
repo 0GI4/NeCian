@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Favorites = require('../../components/pages/Favorites');
-const { Advertisment, Like } = require('../../db/models');
+const { Advertisment, Like, Image } = require('../../db/models');
 
 router.get('/', async (req, res) => {
   try {
@@ -13,7 +13,19 @@ router.get('/', async (req, res) => {
       include: [{ model: Like }],
     });
 
-    const advertisments = likes.map((like) => like.Advertisment);
+    const advertisments = await Advertisment.findAll({
+      include: [
+        {
+          model: Like,
+        },
+        {
+          model: Image,
+        },
+      ],
+      order: [['id', 'ASC']],
+    });
+
+/*     const advertisments = likes.map((like) => like.Advertisment);  */
 
     const document = res.renderComponent(Favorites, {
       title: 'Избранное',
