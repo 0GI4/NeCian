@@ -1,6 +1,6 @@
-const router = require("express").Router();
-const { Advertisment, Category } = require("../../db/models");
-const adminPage = require("../../components/pages/adminPage");
+const router = require('express').Router();
+const { Advertisment, Category, Image } = require('../../db/models');
+const adminPage = require('../../components/pages/adminPage');
 
 router.get("/", async (req, res) => {
   try {
@@ -13,9 +13,10 @@ router.get("/", async (req, res) => {
         ],
       },
       {
-        order: [["id", "ASC"]],
+        order: [['id', 'ASC']],
       }
     );
+    console.log(advertisments);
     const categories = await Category.findAll();
     const document = res.renderComponent(adminPage, {
       title: "Объявления",

@@ -8,7 +8,6 @@ module.exports = function AdsList({ title, user, advertisments, categories }) {
     <Layout title={title} user={user}>
       <FilterHouse categories={categories} />
       <div className="advertismentList advertisment-container">
-        {console.log(user)}
         {advertisments.map((el) => (
           <div
             key={el.id}
