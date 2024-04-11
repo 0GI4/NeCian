@@ -1,13 +1,23 @@
 const router = require("express").Router();
-const { Advertisment, Category } = require("../../db/models");
+const { Advertisment, Category, Image } = require("../../db/models");
 const AdsList = require("../../components/pages/AdsList");
 const FilterHouse = require("../../components/ui/FilterHouse");
 
 router.get("/", async (req, res) => {
   try {
-    const advertisments = await Advertisment.findAll({
-      order: [["id", "ASC"]],
-    });
+    const advertisments = await Advertisment.findAll(
+      {
+        include: [
+          {
+            model: Image
+          },
+        ],
+      },
+      {
+        order: [["id", "ASC"]],
+      }
+    );
+
     const categories = await Category.findAll();
     const document = res.renderComponent(AdsList, {
       title: "Объявления",
@@ -21,19 +31,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.get("/:id/category", async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const category = await Advertisment.findAll({
-//       where: { categoryId: id },
-//     });
-//     console.log(category);
-//     const result = res.renderComponent(AdsList, { title: "a", category });
-//     res.send(result);
-//   } catch (message) {
-//     console.log(message);
-//   }
-// });
 
 router.get("/:id/category", async (req, res) => {
   try {

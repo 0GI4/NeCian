@@ -1,18 +1,28 @@
-const React = require('react');
+const React = require("react");
 
-module.exports = function AddAdvertisment({ user }) {
+module.exports = function AddAdvertisment({ user, categories }) {
   return (
     user && (
-      <div className="courseAddDiv">
-        <div className="addCourseText">Добавить новое объявление</div>
-        <form className="addCourseForm" method="POST" action="/adminPage">
-          <input
+      <div className="adsAddDiv">
+        <div className="addAdvertismentText">Добавить новое объявление</div>
+        <form className="addAdvertismentForm" method="POST" action="/adminPage">
+          <select
             className="add"
             name="category"
+            id="categoryId"
             type="text"
             placeholder="Название категории"
             required
-          />
+          >
+            <option key={3} value={3}>
+              Все категории{" "}
+            </option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
           <input className="add" name="price" type="text" placeholder="Цена" />
           <input
             className="add"
@@ -23,8 +33,9 @@ module.exports = function AddAdvertisment({ user }) {
           <input
             className="add"
             name="photo"
-            type="text"
+            type="file"
             placeholder="photo url"
+            multiple
           />
           <button className="addBtn">SUBMIT</button>
         </form>
