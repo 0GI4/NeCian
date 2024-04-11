@@ -3,7 +3,7 @@ const { Advertisment } = require('../../db/models');
 
 router.delete('/:id', async (req, res) => {
   try {
-    const { id } = req.parasm;
+    const { id } = req.params;
     const value = await Advertisment.destroy({
       where: {
         id,

@@ -1,6 +1,7 @@
-const adminList = document.querySelector('.listAdmin');
 
-adminList.addEventListener('click', async (e) => {
+const listAdmin = document.querySelector('.listAdmin');
+
+listAdmin.addEventListener('click', async (e) => {
   console.log(1);
   if (e.target.classList.contains('updateBtn')) {
     const form = document.querySelector(`.formUpdate${e.target.dataset.id}`);
@@ -28,3 +29,27 @@ adminList.addEventListener('click', async (e) => {
     }
   }
 });
+
+
+if (listAdmin) {
+  listAdmin.addEventListener('click', async (e) => {
+    if (e.target.classList.contains('del')) {
+      try {
+        const card = e.target.closest('.card');
+        const cardId = card.dataset.id;
+        const del = confirm('Вы точно хотите удалить объявление');
+        if (del) {
+          const response = await fetch(`/api/admin/${cardId}`, {
+            method: 'DELETE',
+          });
+          const data = await response.json();
+          if (data.message === 'Success') {
+            card.remove();
+          }
+        }
+      } catch (error) {
+        console.error('Ошибка при удалении карточки:', error);
+      }
+    }
+  });
+}
