@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Users',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       adsId: {
         type: DataTypes.INTEGER,
@@ -24,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Advertisments',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
     },
     {

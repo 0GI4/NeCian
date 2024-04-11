@@ -122,3 +122,10 @@ h1 {
 #signin input:not(:first-child) {
   border-top: 2px solid rgb(52, 56, 61);
 }
+
+.hidden {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}

@@ -1,5 +1,5 @@
-'use strict';
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Image extends Model {
     static associate({ Advertisment }) {
@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Advertisments',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
     },
     {
