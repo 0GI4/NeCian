@@ -1,4 +1,6 @@
 const listAdmin = document.querySelector('.listAdmin');
+const addAdvertismentForm = document.querySelector('.addAdvertismentForm')
+
 
 if (listAdmin) {
   listAdmin.addEventListener('click', async (e) => {
@@ -52,4 +54,12 @@ if (listAdmin) {
       }
     }
   });
+}
+
+
+if (addAdvertismentForm) {
+  addAdvertismentForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const { category, price,  }
+  })
 }
