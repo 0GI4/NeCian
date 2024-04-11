@@ -11,12 +11,18 @@ router.post('/registration', async (req, res) => {
       let user = await User.findOne({ where: { email } });
       if (!user) {
         const hash = await bcrypt.hash(password, 10);
-        user = await User.create({ name, email, password: hash });
+        user = await User.create({
+          name,
+          email,
+          password: hash,
+          isAdmin: false,
+        });
         const { accessToken, refreshToken } = generateTokens({
           user: {
             id: user.id,
             email: user.email,
             name: user.name,
+            isAdmin: user.isAdmin,
           },
         });
         res.cookie('access', accessToken, {
@@ -50,7 +56,12 @@ router.post('/login', async (req, res) => {
 
         if (isSame) {
           const { accessToken, refreshToken } = generateTokens({
-            user: { id: user.id, email: user.email, name: user.name },
+            user: {
+              id: user.id,
+              email: user.email,
+              name: user.name,
+              isAdmin: user.isAdmin,
+            },
           });
           res.cookie('access', accessToken, {
             httpOnly: true,
