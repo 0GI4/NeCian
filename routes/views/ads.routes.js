@@ -41,7 +41,12 @@ router.get('/:id/category', async (req, res) => {
       const category = await Advertisment.findAll({
         where: { categoryId: id },
       });
-      res.json(category);
+      if (category.length) {
+        res.json(category);
+      } else {
+        console.log(category.length);
+        res.json('Вариантов по заданным параметрам нет');
+      }
     }
   } catch (error) {
     console.error('Ошибка при получении объявлений по категории:', error);

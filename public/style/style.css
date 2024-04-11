@@ -56,4 +56,9 @@
   color: red; /* Цвет текста сообщения об ошибке */
   margin-top: 10px; /* Отступ сверху для сообщения об ошибке */
 }
-
+.hidden{
+  visibility: hidden;
+}
+.visible{
+  visibility: visible;
+}
