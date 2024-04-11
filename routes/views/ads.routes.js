@@ -1,5 +1,11 @@
 const router = require('express').Router();
-const { User, Advertisment, Category, Like,Image } = require('../../db/models');
+const {
+  User,
+  Advertisment,
+  Category,
+  Like,
+  Image,
+} = require('../../db/models');
 const AdsList = require('../../components/pages/AdsList');
 const FilterHouse = require('../../components/ui/FilterHouse');
 
@@ -21,7 +27,6 @@ router.get('/', async (req, res) => {
         order: [['id', 'ASC']],
       }
     );
-
     const categories = await Category.findAll();
     const document = res.renderComponent(AdsList, {
       title: 'Объявления',
