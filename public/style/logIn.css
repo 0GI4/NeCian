@@ -1,0 +1,35 @@
+.logInForm {
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logInForm input {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .logInForm button {
+    width: 100%;
+    height: 40px;
+    background-color: #30a8cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logInForm button:hover {
+    background-color: #1f7a8c;
+  }
+  
+  .errRega {
+    color: red;
+    margin-top: 10px;
+  }
