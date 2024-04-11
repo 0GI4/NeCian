@@ -1,14 +1,16 @@
 const React = require('react');
 const Layout = require('../Layout');
 const AdvertismentCard = require('../ui/AdvertismentCard');
-const FilterHouse = require('../ui/FilterHouse');
 
-
-module.exports = function AdsList({ title, user, advertisments, categories, ads }) {
+module.exports = function Favorites({
+  title,
+  user,
+  advertisments,
+  ads,
+}) {
   return (
     <Layout title={title} user={user}>
-      <FilterHouse categories={categories} />
-      <div className="advertismentList advertisment-container">
+      <div className="advertismentList favorites">
         {advertisments.map((advertisement) => {
           const ad = ads.find((ad) => ad.id === advertisement.id);
           const likeCount = ad ? ad.Likes.length : 0;
@@ -17,8 +19,8 @@ module.exports = function AdsList({ title, user, advertisments, categories, ads 
           return (
             <div
               key={advertisement.id}
-              data-id={advertisement.id}
               className="card"
+              data-id={advertisement.id}
               style={{ width: '18rem', margin: '20px' }}
             >
               <AdvertismentCard

@@ -1,10 +1,14 @@
 const router = require('express').Router();
-const { Advertisment, Category, Image } = require('../../db/models');
+const { User, Advertisment, Category, Like,Image } = require('../../db/models');
 const AdsList = require('../../components/pages/AdsList');
 const FilterHouse = require('../../components/ui/FilterHouse');
 
 router.get('/', async (req, res) => {
   try {
+    const ads = await Advertisment.findAll({
+      include: [{ model: Like }],
+    });
+
     const advertisments = await Advertisment.findAll(
       {
         include: [
@@ -23,6 +27,7 @@ router.get('/', async (req, res) => {
       title: 'Объявления',
       advertisments,
       categories,
+      ads,
     });
     res.send(document);
   } catch (error) {

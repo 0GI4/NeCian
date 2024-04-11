@@ -62,3 +62,20 @@
 .visible{
   visibility: visible;
 }
+
+
+.like-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.like-button .bi-heart {
+  font-size: 1.5rem;
+  color: gray; /* Цвет сердечка по умолчанию */
+}
+
+.like-button.liked .bi-heart {
+  color: red; /* Цвет сердечка при лайке от пользователя */
+}
+
