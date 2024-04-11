@@ -11,6 +11,8 @@ module.exports = function Layout({ title, children, user }) {
         <link rel="stylesheet" href="/style/style.css" />
         <link rel="stylesheet" href="/style/styleFilter.css" />
         <link rel="stylesheet" href="/style/viewCard.css" />
+        <link rel="stylesheet" href="/style/footer.css" />
+        <link rel="stylesheet" href="/style/navbar.css" />
         <script defer src="/scripts/authScripts.js" />
         <script defer src="/scripts/filterHouse.js" />
         <script defer src="/scripts/adminScripts.js" />
