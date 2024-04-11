@@ -31,7 +31,6 @@ if (listAdmin) {
         const priceElement = document.querySelector(`.price${id}`);
         const descriptionElement = document.querySelector(`.description${id}`);
 
-        // Проверяем, что элементы найдены, и обновляем их содержимое.
         if (priceElement) priceElement.textContent = `${data.price} ₽`;
         if (descriptionElement)
           descriptionElement.innerHTML = `<em>${data.description}</em>`;
