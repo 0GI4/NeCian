@@ -7,130 +7,61 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
-  background: white;
-}
+
 .regcont {
   display: flex;
-  width: 100%;
-  justify-content: center;
-}
-h1 {
-  color: rgb(255, 255, 255);
-  margin: 30px 0;
-  width: 200px;
-  text-align: center;
-}
-#wrapper {
-  height: 80vh;
-  padding-left: 6ch;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin-top: 50px; /* Отступ сверху для выравнивания по центру */
 }
 
-/* === Sign in Form === */
-#signin {
-  height: 135px; /* Adjusted height to accommodate the third input */
-  width: 300px;
-  border-radius: 8px;
-  position: relative;
-}
-#signin::before {
-  display: block;
-  position: relative;
-  height: 2px;
-  background: rgb(52, 56, 61);
-  content: '';
-  top: 44px;
-  margin-left: 20px;
-  z-index: 1;
-}
-#signin input:first-of-type {
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-}
-#signin input:last-of-type {
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-#signin input[type='text'],
-#signin input[type='password'],
-#signin input[type='email'], /* Added selector for email */
-#signin button[type='submit'] {
-  background: rgb(28, 30, 33);
-  box-shadow: inset -100px -100px 0 rgb(28, 30, 33); /*Prevent yellow autofill color*/
-  color: rgb(52, 56, 61);
-}
-#signin input[type='text'],
-#signin input[type='password'],
-#signin input[type='email'] {
-  position: relative;
-  display: block;
-  width: 280px;
-  height: 45px;
-  border: 0;
-  outline: 0;
-  top: -2px;
-  padding: 0 0 0 20px;
-  font-weight: 700;
-}
-#signin input[type='text']:focus,
-#signin input[type='password']:focus,
-#signin input[type='email']:focus {
-  color: rgb(255, 255, 255);
-}
-#signin button[type='submit'] {
-  display: block;
-  position: absolute;
-  width: 52px;
-  height: 52px;
-  color: rgb(52, 56, 61);
-  border-radius: 50px;
-  outline: 0;
-  z-index: 2;
-  top: 19px;
-  right: -24px;
-  border: 6px solid rgb(52, 56, 61);
-  font-size: 25px;
-  text-indent: 0px;
-  padding-left: 9px;
-  padding-bottom: 3px;
-  text-align: center;
-}
-#signin button[type='submit']:hover {
-  color: rgb(0, 126, 165);
-  text-shadow: 0 0 10px rgb(0, 126, 165);
-  cursor: pointer;
-}
-#signin p {
-  color: rgb(79, 85, 97);
-  padding: 0 20px;
-  font-weight: 700;
-  font-size: 12px;
-  margin: 5px 0 0 0;
-}
-#signin p > a {
-  color: rgb(111, 119, 135);
-  text-decoration: none;
-}
-#signin p > a:hover {
-  border-bottom: 1px solid;
+.regH1 {
+  color: #30a8cc; /* Цвет заголовка */
+  font-size: 24px; /* Размер шрифта заголовка */
+  margin-bottom: 20px; /* Отступ снизу для заголовка */
 }
 
-/* Added to provide separation between inputs */
-#signin input:not(:first-child) {
-  border-top: 2px solid rgb(52, 56, 61);
+.registrForm {
+  width: 300px; /* Ширина формы */
+  padding: 20px; /* Внутренние отступы */
+  border-radius: 8px; /* Закругленные углы формы */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень формы */
 }
 
-.hidden {
+.registrForm input {
+  width: 100%; /* Ширина инпутов */
+  height: 40px; /* Высота инпутов */
+  margin-bottom: 20px; /* Отступ снизу между инпутами */
+  padding: 0 10px; /* Внутренние отступы инпутов */
+  border: 1px solid #ccc; /* Граница инпутов */
+  border-radius: 5px; /* Закругленные углы инпутов */
+}
+
+.registrForm button {
+  width: 100%; /* Ширина кнопки */
+  height: 40px; /* Высота кнопки */
+  background-color: #30a8cc; /* Цвет кнопки */
+  color: #fff; /* Цвет текста на кнопке */
+  border: none; /* Убираем границу кнопки */
+  border-radius: 5px; /* Закругляем углы кнопки */
+  cursor: pointer; /* Изменяем курсор при наведении */
+  transition: background-color 0.3s; /* Плавное изменение цвета фона при наведении */
+}
+
+.registrForm button:hover {
+  background-color: #1f7a8c; /* Цвет кнопки при наведении */
+}
+
+.errRega {
+  color: red; /* Цвет текста сообщения об ошибке */
+  margin-top: 10px; /* Отступ сверху для сообщения об ошибке */
+}
+.hidden{
   visibility: hidden;
 }
-.visible {
+.visible{
   visibility: visible;
 }
-
-
 
 
 .like-button {
@@ -147,3 +78,4 @@ h1 {
 .like-button.liked .bi-heart {
   color: red; /* Цвет сердечка при лайке от пользователя */
 }
+

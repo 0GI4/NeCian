@@ -11,7 +11,7 @@ module.exports = function adminPage({
 }) {
   return (
     <Layout title={title} user={user}>
-      <AddAdv user={user} /* categories={categories} */ />
+      <AddAdv user={user} categories={categories} />
       <div className="listAdmin">
         {advertisments.map((el) => (
           <div
@@ -20,7 +20,7 @@ module.exports = function adminPage({
             data-id={el.id}
             style={{ width: '18rem', margin: '20px' }}
           >
-            <AdvertismentCard advertisment={el} />
+            <AdvertismentCard key={el.id} advertisment={el} user={user} />
             {user && <button className="del">Удалить</button>}
             {user && (
               <button className="del upd updateBtn" data-id={el.id}>

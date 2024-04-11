@@ -3,12 +3,11 @@ const Layout = require('../Layout');
 const AdvertismentCard = require('../ui/AdvertismentCard');
 const FilterHouse = require('../ui/FilterHouse');
 
-module.exports = function AdsList({
-  title, user, advertisments, ads,
-}) {
+
+module.exports = function AdsList({ title, user, advertisments, categories, ads }) {
   return (
     <Layout title={title} user={user}>
-      <FilterHouse />
+      <FilterHouse categories={categories} />
       <div className="advertismentList advertisment-container">
         {advertisments.map((advertisement) => {
           const ad = ads.find((ad) => ad.id === advertisement.id);

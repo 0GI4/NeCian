@@ -1,4 +1,5 @@
 const listAdmin = document.querySelector('.listAdmin');
+const addAdvertismentForm = document.querySelector('.addAdvertismentForm');
 
 if (listAdmin) {
   listAdmin.addEventListener('click', async (e) => {
@@ -13,7 +14,7 @@ if (listAdmin) {
       const { id } = form.dataset;
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
-
+      console.log(data);
       const response = await fetch(`/api/admin/${id}`, {
         method: 'PUT',
         headers: {
@@ -25,6 +26,12 @@ if (listAdmin) {
       const result = await response.json();
       if (result.message === 'ok') {
         form.classList.add('hidden');
+        const priceElement = document.querySelector(`.price${id}`);
+        const descriptionElement = document.querySelector(`.description${id}`);
+
+        if (priceElement) priceElement.textContent = `${data.price} ₽`;
+        if (descriptionElement)
+          descriptionElement.innerHTML = `<em>${data.description}</em>`;
       }
     }
   });
@@ -35,6 +42,7 @@ if (listAdmin) {
     if (e.target.classList.contains('del')) {
       try {
         const card = e.target.closest('.card');
+        console.log(card.dataset);
         const cardId = card.dataset.id;
         const del = confirm('Вы точно хотите удалить объявление');
         if (del) {
