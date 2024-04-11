@@ -13,7 +13,11 @@ router.post('/registration', async (req, res) => {
         const hash = await bcrypt.hash(password, 10);
         user = await User.create({ name, email, password: hash });
         const { accessToken, refreshToken } = generateTokens({
-          user: { id: user.id, email: user.email, name: user.name },
+          user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+          },
         });
         res.cookie('access', accessToken, {
           httpOnly: true,
@@ -58,19 +62,16 @@ router.post('/login', async (req, res) => {
           });
           res.status(201).json({ message: 'ok' });
         } else {
-          res
-            .status(400)
-            .json({
-              message:
-                'Такого пользователя не существует,либо email или пароль не верен',
-            });
+          res.status(400).json({
+            message:
+              'Такого пользователя не существует,либо email или пароль не верен',
+          });
         }
       } else {
-        res
-          .status(400)
-          .json({
-            message: 'Такого пользователя не существует,либо email или пароль не верен',
-          });
+        res.status(400).json({
+          message:
+            'Такого пользователя не существует,либо email или пароль не верен',
+        });
       }
     } else {
       res.status(400).json({ message: 'Заполните все поля' });
