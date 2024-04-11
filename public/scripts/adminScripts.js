@@ -1,33 +1,32 @@
-const listAdmin = document.querySelector('.listAdmin');
-const addAdvertismentForm = document.querySelector('.addAdvertismentForm')
-
+const listAdmin = document.querySelector(".listAdmin");
+const addAdvertismentForm = document.querySelector(".addAdvertismentForm");
 
 if (listAdmin) {
-  listAdmin.addEventListener('click', async (e) => {
+  listAdmin.addEventListener("click", async (e) => {
     console.log(1);
-    if (e.target.classList.contains('updateBtn')) {
+    if (e.target.classList.contains("updateBtn")) {
       const form = document.querySelector(`.formUpdate${e.target.dataset.id}`);
-      form.classList.toggle('hidden');
+      form.classList.toggle("hidden");
     }
 
-    if (e.target.classList.contains('saveUpdate')) {
+    if (e.target.classList.contains("saveUpdate")) {
       e.preventDefault();
-      const form = e.target.closest('form');
+      const form = e.target.closest("form");
       const { id } = form.dataset;
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
       console.log(data);
       const response = await fetch(`/api/admin/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
 
       const result = await response.json();
-      if (result.message === 'ok') {
-        form.classList.add('hidden');
+      if (result.message === "ok") {
+        form.classList.add("hidden");
         const priceElement = document.querySelector(`.price${id}`);
         const descriptionElement = document.querySelector(`.description${id}`);
 
@@ -41,32 +40,54 @@ if (listAdmin) {
 }
 
 if (listAdmin) {
-  listAdmin.addEventListener('click', async (e) => {
-    if (e.target.classList.contains('del')) {
+  listAdmin.addEventListener("click", async (e) => {
+    if (e.target.classList.contains("del")) {
       try {
-        const card = e.target.closest('.card');
+        const card = e.target.closest(".card");
         const cardId = card.dataset.id;
-        const del = confirm('Вы точно хотите удалить объявление');
+        const del = confirm("Вы точно хотите удалить объявление");
         if (del) {
           const response = await fetch(`/api/admin/${cardId}`, {
-            method: 'DELETE',
+            method: "DELETE",
           });
           const data = await response.json();
-          if (data.message === 'Success') {
+          if (data.message === "Success") {
             card.remove();
           }
         }
       } catch (error) {
-        console.error('Ошибка при удалении карточки:', error);
+        console.error("Ошибка при удалении карточки:", error);
       }
     }
   });
 }
 
-
 if (addAdvertismentForm) {
-  addAdvertismentForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const { category, price,  }
-  })
+  addAdvertismentForm.addEventListener("submit", async (event) => {
+    try {
+      event.preventDefault();
+      const { category, price, description, photo } = event.target;
+      const res = await fetch("/api/admin", {
+        method: "post",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          category: category.value,
+          price: price.value,
+          description: description.value,
+          photo: photo.value,
+        }),
+      });
+      const data = await res.json();
+      if (data.message === "success") {
+        listAdmin.insertAdjacentHTML("beforeend", data.html);
+        event.target.reset();
+      } else {
+        document.querySelector(".errAdvertisment").innerHTML = data.message;
+      }
+    } catch ({ message }) {
+      res.status(500).json({ message });
+    }
+  });
 }

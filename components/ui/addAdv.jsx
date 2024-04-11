@@ -39,6 +39,7 @@ module.exports = function AddAdvertisment({ user, categories }) {
           />
           <button className="addBtn">SUBMIT</button>
         </form>
+        <p className='errAdvertisment'></p>
       </div>
     )
   );
