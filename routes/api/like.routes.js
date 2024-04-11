@@ -1,29 +1,26 @@
-const router = require('express').Router();
-const Favorites = require('../../components/pages/Favorites');
+const express = require('express');
+
+const router = express.Router();
 const { Like } = require('../../db/models');
 
-router.put('/:adsId', async (req, res) => {
+router.put('/:advertisementId/change', async (req, res) => {
+  const { id } = res.locals.user;
+  const { advertisementId } = req.params;
+  console.log(advertisementId);
   try {
     const like = await Like.findOne({
-      where: { carId: Number(req.params.carId), userId: 2 },
+      where: { adsId: advertisementId, userId: id },
     });
     if (like) {
-      await Like.destroy({
-        where: { carId: Number(req.params.carId), userId: 2 },
-      });
+      await Like.destroy({ where: { adsId: advertisementId, userId: id } });
+      res.status(200).json({ message: 'Лайк отменен' });
     } else {
-      await Like.create({
-        carId: Number(req.params.carId),
-        userId: 2,
-      });
+      await Like.create({ adsId: advertisementId, userId: id });
+      res.status(200).json({ message: 'Лайк добавлен' });
     }
-    const likeArr = await Like.findAll({
-      raw: true,
-      where: { carId: Number(req.params.carId) },
-    });
-    res.status(200).json({ quantityLikes: likeArr.length, message: 'ok' });
-  } catch (e) {
-    res.status(500).json(e.message);
+  } catch (error) {
+    console.error('Ошибка обработки лайка:', error);
+    res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
 

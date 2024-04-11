@@ -9,12 +9,17 @@ router.get('/', async (req, res) => {
       where: { userId: id },
       include: [{ model: Advertisment }],
     });
+    const ads = await Advertisment.findAll({
+      include: [{ model: Like }],
+    });
+
     const advertisments = likes.map((like) => like.Advertisment);
 
     const document = res.renderComponent(Favorites, {
       title: 'Избранное',
       advertisments,
       user: res.locals.user,
+      ads,
     });
     res.send(document);
   } catch (error) {

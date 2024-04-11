@@ -12,6 +12,7 @@ module.exports = function Layout({ title, children, user }) {
         <script defer src="/scripts/authScripts.js" />
         <script defer src="/scripts/filterHouse.js" />
         <script defer src="/scripts/adminScripts.js" />
+        <script defer src="/scripts/likeScripts.js" />
       </head>
       <body>
         <NavBar user={user} />

@@ -6,25 +6,39 @@ module.exports = function Favorites({
   title,
   user,
   advertisments,
+  ads,
 }) {
   return (
     <Layout title={title} user={user}>
       <div className="advertismentList favorites">
-        {advertisments.map((el) => (
-          <div
-            key={el.id}
-            className="card"
-            data-id={advertisments.id}
-            style={{ width: '18rem', margin: '20px' }}
-          >
-            <AdvertismentCard
-              key={el.id}
-              s
-              advertisment={el}
-              user={user}
-            />
-          </div>
-        ))}
+        {advertisments.map((advertisement) => {
+          const ad = ads.find((ad) => ad.id === advertisement.id);
+          const likeCount = ad ? ad.Likes.length : 0;
+          const isLikedByUser = ad && ad.Likes.some((like) => like.userId === user.id);
+
+          return (
+            <div
+              key={advertisement.id}
+              className="card"
+              data-id={advertisement.id}
+              style={{ width: '18rem', margin: '20px' }}
+            >
+              <AdvertismentCard
+                key={advertisement.id}
+                advertisment={advertisement}
+                user={user}
+              />
+              <div className={`quantityLikes${advertisement.id}`}>
+                {likeCount}
+              </div>
+              <button
+                className="like-button"
+              >
+                {isLikedByUser ? '❤️' : '🤍'}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </Layout>
   );

@@ -6,20 +6,6 @@ const FilterHouse = require('../ui/FilterHouse');
 module.exports = function AdsList({
   title, user, advertisments, ads,
 }) {
-  const handleLikeClick = async (advertisementId) => {
-    try {
-      const res = await fetch(`/likes/${advertisementId}`, {
-        method: 'PUT',
-      });
-      const data = await res.json();
-      if (data.message === 'ok') {
-        // Обновляем стейт или делаем другие необходимые действия
-      }
-    } catch (error) {
-      console.error('Error liking advertisment:', error);
-    }
-  };
-
   return (
     <Layout title={title} user={user}>
       <FilterHouse />
@@ -32,6 +18,7 @@ module.exports = function AdsList({
           return (
             <div
               key={advertisement.id}
+              data-id={advertisement.id}
               className="card"
               style={{ width: '18rem', margin: '20px' }}
             >
@@ -44,8 +31,7 @@ module.exports = function AdsList({
                 {likeCount}
               </div>
               <button
-                className={`like-button ${isLikedByUser ? 'liked' : ''}`}
-                onClick={() => handleLikeClick(advertisement.id)}
+                className="like-button"
               >
                 {isLikedByUser ? '❤️' : '🤍'}
               </button>
