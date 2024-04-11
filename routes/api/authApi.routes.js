@@ -62,19 +62,19 @@ router.post('/login', async (req, res) => {
           });
           res.status(201).json({ message: 'ok' });
         } else {
-          res.status(400).json({
+          res.status(401).json({
             message:
               'Такого пользователя не существует,либо email или пароль не верен',
           });
         }
       } else {
-        res.status(400).json({
+        res.status(402).json({
           message:
             'Такого пользователя не существует,либо email или пароль не верен',
         });
       }
     } else {
-      res.status(400).json({ message: 'Заполните все поля' });
+      res.status(403).json({ message: 'Заполните все поля' });
     }
   } catch ({ message }) {
     console.log(message);

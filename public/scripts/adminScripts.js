@@ -2,7 +2,6 @@ const listAdmin = document.querySelector('.listAdmin');
 
 if (listAdmin) {
   listAdmin.addEventListener('click', async (e) => {
-    console.log(1);
     if (e.target.classList.contains('updateBtn')) {
       const form = document.querySelector(`.formUpdate${e.target.dataset.id}`);
       form.classList.toggle('hidden');
