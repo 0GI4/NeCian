@@ -1,0 +1,40 @@
+.viewCard {
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: var(--shadow-default); 
+    padding: 15px;
+    margin-bottom: 20px; 
+    transition: box-shadow 0.3s ease; 
+  }
+  
+  .viewCard:hover {
+    box-shadow: var(--shadow-hover);
+  }
+  
+ 
+  :root {
+    --shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    --shadow-hover: 0 4px 8px rgba(0, 191, 255, 0.4); 
+  }
+  
+  .viewCard img {
+    display: block; 
+    width: 100%; 
+    height: auto; 
+    border-radius: 8px; 
+    margin-bottom: 10px; 
+  }
+  
+  .viewCard h5 {
+    font-size: 20px; 
+    margin-bottom: 5px; 
+  }
+  
+  .viewCard p {
+    margin-bottom: 10px; 
+    line-height: 1.5; 
+  }
+  
+  .viewCard p:last-child {
+    margin-bottom: 0; 
+  }

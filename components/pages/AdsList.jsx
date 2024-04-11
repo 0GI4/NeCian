@@ -3,10 +3,10 @@ const Layout = require('../Layout');
 const AdvertismentCard = require('../ui/AdvertismentCard');
 const FilterHouse = require('../ui/FilterHouse');
 
-module.exports = function AdsList({ title, user, advertisments }) {
+module.exports = function AdsList({ title, user, advertisments, categories }) {
   return (
     <Layout title={title} user={user}>
-      <FilterHouse />
+      <FilterHouse categories={categories}/>
       <div className="advertismentList advertisment-container">
         {advertisments.map((el) => (
           <div

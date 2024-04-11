@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Advertisment, Category } = require("../../db/models");
 const AdsList = require("../../components/pages/AdsList");
+const FilterHouse = require("../../components/ui/FilterHouse");
 
 router.get("/", async (req, res) => {
   try {
@@ -20,12 +21,32 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  const advertismentList = await Advertisment.findAll({
-    where: { categoryId: id },
-  });
-  res.send(advertismentList)
-}); */
+// router.get("/:id/category", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const category = await Advertisment.findAll({
+//       where: { categoryId: id },
+//     });
+//     console.log(category);
+//     const result = res.renderComponent(AdsList, { title: "a", category });
+//     res.send(result);
+//   } catch (message) {
+//     console.log(message);
+//   }
+// });
+
+router.get("/:id/category", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const category = await Advertisment.findAll({
+      where: { categoryId: id },
+    });
+    console.log(category);
+    res.json(category); // Отправляем данные как JSON
+  } catch (error) {
+    console.error("Ошибка при получении объявлений по категории:", error);
+    res.status(500).json({ message: "Ошибка сервера" });
+  }
+});
 
 module.exports = router;
