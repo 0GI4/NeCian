@@ -12,49 +12,49 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px; /* Отступ сверху для выравнивания по центру */
+  margin-top: 50px; 
 }
 
 .regH1 {
-  color: #30a8cc; /* Цвет заголовка */
-  font-size: 24px; /* Размер шрифта заголовка */
-  margin-bottom: 20px; /* Отступ снизу для заголовка */
+  color: #30a8cc; 
+  font-size: 24px; 
+  margin-bottom: 20px;
 }
 
 .registrForm {
-  width: 300px; /* Ширина формы */
-  padding: 20px; /* Внутренние отступы */
-  border-radius: 8px; /* Закругленные углы формы */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень формы */
+  width: 300px; 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .registrForm input {
-  width: 100%; /* Ширина инпутов */
-  height: 40px; /* Высота инпутов */
-  margin-bottom: 20px; /* Отступ снизу между инпутами */
-  padding: 0 10px; /* Внутренние отступы инпутов */
-  border: 1px solid #ccc; /* Граница инпутов */
-  border-radius: 5px; /* Закругленные углы инпутов */
+  width: 100%; 
+  height: 40px; 
+  margin-bottom: 20px; 
+  padding: 0 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
 }
 
 .registrForm button {
-  width: 100%; /* Ширина кнопки */
-  height: 40px; /* Высота кнопки */
-  background-color: #30a8cc; /* Цвет кнопки */
-  color: #fff; /* Цвет текста на кнопке */
-  border: none; /* Убираем границу кнопки */
-  border-radius: 5px; /* Закругляем углы кнопки */
-  cursor: pointer; /* Изменяем курсор при наведении */
-  transition: background-color 0.3s; /* Плавное изменение цвета фона при наведении */
+  width: 100%; 
+  height: 40px; 
+  background-color: #30a8cc;
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
 }
 
 .registrForm button:hover {
-  background-color: #1f7a8c; /* Цвет кнопки при наведении */
+  background-color: #1f7a8c; 
 }
 
 .errRega {
-  color: red; /* Цвет текста сообщения об ошибке */
-  margin-top: 10px; /* Отступ сверху для сообщения об ошибке */
+  color: red; 
+  margin-top: 10px; 
 }
 .hidden{
   visibility: hidden;
