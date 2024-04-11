@@ -1,13 +1,15 @@
-const React = require("react");
+const React = require('react');
 
 function FilterHouse({ categories }) {
-
   return (
     <form className="FormFilter">
-      <select className="FilterHouse"name='select'>
-         <option headers>Выберите категорию</option> 
+      <select className="FilterHouse" name="select">
+        <option headers>Выберите категорию</option>
+        <option name="drk" value={0}>
+          Все категории
+        </option>
         {categories.map((category) => (
-          <option name={"drk"} value={category.id}>
+          <option name="drk" value={category.id}>
             {category.name}
           </option>
         ))}
