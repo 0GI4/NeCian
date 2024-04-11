@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 const router = require("express").Router();
 const { Advertisment, Category, Image } = require("../../db/models");
 const AdsList = require("../../components/pages/AdsList");
 const FilterHouse = require("../../components/ui/FilterHouse");
 const AdvertismentCard = require("../../components/ui/AdvertismentCard");
-=======
-const router = require('express').Router();
-const { Advertisment, Category, Image } = require('../../db/models');
-const AdsList = require('../../components/pages/AdsList');
-const FilterHouse = require('../../components/ui/FilterHouse');
->>>>>>> origin
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const advertisments = await Advertisment.findAll(
       {
@@ -22,56 +15,39 @@ router.get('/', async (req, res) => {
         ],
       },
       {
-        order: [['id', 'ASC']],
+        order: [["id", "ASC"]],
       }
     );
 
     const categories = await Category.findAll();
     const document = res.renderComponent(AdsList, {
-      title: 'Объявления',
+      title: "Объявления",
       advertisments,
       categories,
     });
     res.send(document);
   } catch (error) {
-    console.error('Ошибка при получении списка объявлений:', error);
-    res.status(500).send('Внутренняя ошибка сервера');
+    console.error("Ошибка при получении списка объявлений:", error);
+    res.status(500).send("Внутренняя ошибка сервера");
   }
 });
 
-router.get('/:id/category', async (req, res) => {
+router.get("/:id/category", async (req, res) => {
   try {
     const { id } = req.params;
-    if (id === '0') {
+    if (id === "0") {
       const category = await Advertisment.findAll();
       res.json(category);
     } else {
       const category = await Advertisment.findAll({
-        where: { categoryId: id },
+        where: { categoryId: id } 
       });
       res.json(category);
     }
   } catch (error) {
-    console.error('Ошибка при получении объявлений по категории:', error);
-    res.status(500).json({ message: 'Ошибка сервера' });
+    console.error("Ошибка при получении объявлений по категории:", error);
+    res.status(500).json({ message: "Ошибка сервера" });
   }
 });
-
-router.post('/', async (req, res) => {
-  try {
-    
-  } catch ({ message }) {
-    res.json({ message: 'Н'})
-    
-  }
-  const { category, price, description, photo } = req.body;
-  if (!category.trim() || !price.trim() || !description.trim() || !photo.trim()) {
-    res.json({ message: 'Заполните, пожалуйста, все поля'})
-  } else { 
-    const advertisment = await Advertisment.create({ category, price, description, photo })
-    const html = res.renderComponent(AdvertismentCard, { advertisment }, { doctype: false })
-    res.json({ html, message: 'success'})
-  }
-})
 
 module.exports = router;

@@ -66,17 +66,18 @@ if (addAdvertismentForm) {
     try {
       event.preventDefault();
       const { category, price, description, photo } = event.target;
+      const formData = new FormData();
+      const picturesData = [...photo.files];
+      picturesData.forEach((file) => {
+        formData.append("url", file);
+      });
+      formData.append("categoryId", category.value);
+      formData.append("price", price.value);
+      formData.append("description", description.value);
+
       const res = await fetch("/api/admin", {
         method: "post",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          category: category.value,
-          price: price.value,
-          description: description.value,
-          photo: photo.value,
-        }),
+        body: formData,
       });
       const data = await res.json();
       if (data.message === "success") {
@@ -85,8 +86,8 @@ if (addAdvertismentForm) {
       } else {
         document.querySelector(".errAdvertisment").innerHTML = data.message;
       }
-    } catch ({ message }) {
-      res.status(500).json({ message });
+    } catch (error) {
+      console.error("Ошибка при добавлении карточки:", error);
     }
   });
 }
