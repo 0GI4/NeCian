@@ -14,7 +14,7 @@ module.exports = function adminPage({
           <div
             key={el.id}
             className="card"
-            data-id={advertisments.id}
+            data-id={el.id}
             style={{ width: '18rem', margin: '20px' }}
           >
             <AdvertismentCard advertisment={el} />

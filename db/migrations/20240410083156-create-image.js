@@ -19,6 +19,7 @@ module.exports = {
           model: 'Advertisments',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
