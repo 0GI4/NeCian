@@ -1,10 +1,10 @@
-const listAdmin = document.querySelector(".listAdmin");
-const addAdvertismentForm = document.querySelector(".addAdvertismentForm");
+
+const listAdmin = document.querySelector('.listAdmin');
+const addAdvertismentForm = document.querySelector('.addAdvertismentForm');
 
 if (listAdmin) {
-  listAdmin.addEventListener("click", async (e) => {
-    console.log(1);
-    if (e.target.classList.contains("updateBtn")) {
+  listAdmin.addEventListener('click', async (e) => {
+    if (e.target.classList.contains('updateBtn')) {
       const form = document.querySelector(`.formUpdate${e.target.dataset.id}`);
       form.classList.toggle("hidden");
     }
@@ -91,3 +91,4 @@ if (addAdvertismentForm) {
     }
   });
 }
+

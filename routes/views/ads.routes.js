@@ -1,29 +1,36 @@
 const router = require("express").Router();
-const { Advertisment, Category, Image } = require("../../db/models");
-const AdsList = require("../../components/pages/AdsList");
-const FilterHouse = require("../../components/ui/FilterHouse");
 const AdvertismentCard = require("../../components/ui/AdvertismentCard");
+const {
+  User,
+  Advertisment,
+  Category,
+  Like,
+  Image,
+} = require('../../db/models');
+const AdsList = require('../../components/pages/AdsList');
+const FilterHouse = require('../../components/ui/FilterHouse');
 
 router.get("/", async (req, res) => {
   try {
-    const advertisments = await Advertisment.findAll(
-      {
-        include: [
-          {
-            model: Image,
-          },
-        ],
-      },
-      {
-        order: [["id", "ASC"]],
-      }
-    );
+    const advertisments = await Advertisment.findAll({
+      include: [
+        {
+          model: Like,
+        },
+        {
+          model: Image,
+        },
+      ],
+      order: [['id', 'ASC']],
+    });
 
     const categories = await Category.findAll();
+
     const document = res.renderComponent(AdsList, {
       title: "Объявления",
       advertisments,
       categories,
+      ads: advertisments, // Теперь это те же самые объявления с включенными лайками и изображениями
     });
     res.send(document);
   } catch (error) {
@@ -42,7 +49,12 @@ router.get("/:id/category", async (req, res) => {
       const category = await Advertisment.findAll({
         where: { categoryId: id } 
       });
-      res.json(category);
+      if (category.length) {
+        res.json(category);
+      } else {
+        console.log(category.length);
+        res.json('Вариантов по заданным параметрам нет');
+      }
     }
   } catch (error) {
     console.error("Ошибка при получении объявлений по категории:", error);

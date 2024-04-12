@@ -13,9 +13,11 @@ module.exports = function Layout({ title, children, user }) {
         <link rel="stylesheet" href="/style/viewCard.css" />
         <link rel="stylesheet" href="/style/footer.css" />
         <link rel="stylesheet" href="/style/navbar.css" />
+        <link rel="stylesheet" href="/style/logIn.css" />
         <script defer src="/scripts/authScripts.js" />
         <script defer src="/scripts/filterHouse.js" />
         <script defer src="/scripts/adminScripts.js" />
+        <script defer src="/scripts/likeScripts.js" />
       </head>
       <body>
         <NavBar user={user} />
