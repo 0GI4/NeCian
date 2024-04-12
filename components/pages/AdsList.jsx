@@ -3,16 +3,20 @@ const Layout = require('../Layout');
 const AdvertismentCard = require('../ui/AdvertismentCard');
 const FilterHouse = require('../ui/FilterHouse');
 
-
-module.exports = function AdsList({ title, user, advertisments, categories, ads }) {
+module.exports = function AdsList({ title, user, advertisments, categories }) {
   return (
     <Layout title={title} user={user}>
       <FilterHouse categories={categories} />
       <div className="advertismentList advertisment-container">
         {advertisments.map((advertisement) => {
-          const ad = ads.find((ad) => ad.id === advertisement.id);
-          const likeCount = ad ? ad.Likes.length : 0;
-          const isLikedByUser = ad && ad.Likes.some((like) => like.userId === user.id);
+          const likeCount = advertisement.Likes
+            ? advertisement.Likes.length
+            : 0;
+          // Проверяем, зарегистрирован ли пользователь перед проверкой лайков
+          const isLikedByUser =
+            user &&
+            advertisement.Likes &&
+            advertisement.Likes.some((like) => like.userId === user.id);
 
           return (
             <div
@@ -29,9 +33,7 @@ module.exports = function AdsList({ title, user, advertisments, categories, ads 
               <div className={`quantityLikes${advertisement.id}`}>
                 {likeCount}
               </div>
-              <button
-                className="like-button"
-              >
+              <button className="like-button">
                 {isLikedByUser ? '❤️' : '🤍'}
               </button>
             </div>

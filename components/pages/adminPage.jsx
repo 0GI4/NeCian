@@ -23,7 +23,7 @@ module.exports = function adminPage({
             <AdvertismentCard key={el.id} advertisment={el} user={user} />
             {user && <button className="del">Удалить</button>}
             {user && (
-              <button className="del upd updateBtn" data-id={el.id}>
+              <button className="upd updateBtn" data-id={el.id}>
                 Изменить
               </button>
             )}
