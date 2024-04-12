@@ -7,7 +7,6 @@ module.exports = function Layout({ title, children, user }) {
     <html lang="en">
       <head>
         <title>{title}</title>
-        {/* <link rel="stylesheet" href="/style/navbar.css" /> */}
         <link rel="stylesheet" href="/style/style.css" />
         <link rel="stylesheet" href="/style/styleFilter.css" />
         <link rel="stylesheet" href="/style/viewCard.css" />
@@ -15,6 +14,8 @@ module.exports = function Layout({ title, children, user }) {
         <link rel="stylesheet" href="/style/navbar.css" />
         <link rel="stylesheet" href="/style/logIn.css" />
         <link rel="stylesheet" href="/style/search.css" />
+        <link rel="stylesheet" href="/style/cardPage.css" />
+        <link rel="stylesheet" href="/style/mainCardPage.css" />
         <script defer src="/scripts/authScripts.js" />
         <script defer src="/scripts/filterHouse.js" />
         <script defer src="/scripts/adminScripts.js" />
