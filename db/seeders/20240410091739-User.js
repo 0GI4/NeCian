@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const hashAdm = await bcryptjs.hash("admin123", 10);
+    const hashAdm = await bcryptjs.hash("7890", 10);
     const hashUs1 = await bcryptjs.hash("user123", 10);
     const hashUs2 = await bcryptjs.hash("user456", 10);
     const hashUs3 = await bcryptjs.hash("user789", 10);
@@ -12,7 +12,7 @@ module.exports = {
     await queryInterface.bulkInsert("Users", [
       {
         name: "Администратор",
-        email: "admin@example.com",
+        email: "pashka_ne@css",
         password: hashAdm,
         isAdmin: true,
         createdAt: new Date(),
