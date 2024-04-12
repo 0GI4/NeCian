@@ -1,4 +1,5 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const AdvertismentCard = require("../../components/ui/AdvertismentCard");
 const {
   User,
   Advertisment,
@@ -9,7 +10,7 @@ const {
 const AdsList = require('../../components/pages/AdsList');
 const FilterHouse = require('../../components/ui/FilterHouse');
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const advertisments = await Advertisment.findAll({
       include: [
@@ -26,27 +27,27 @@ router.get('/', async (req, res) => {
     const categories = await Category.findAll();
 
     const document = res.renderComponent(AdsList, {
-      title: 'Объявления',
+      title: "Объявления",
       advertisments,
       categories,
       ads: advertisments, // Теперь это те же самые объявления с включенными лайками и изображениями
     });
     res.send(document);
   } catch (error) {
-    console.error('Ошибка при получении списка объявлений:', error);
-    res.status(500).send('Внутренняя ошибка сервера');
+    console.error("Ошибка при получении списка объявлений:", error);
+    res.status(500).send("Внутренняя ошибка сервера");
   }
 });
 
-router.get('/:id/category', async (req, res) => {
+router.get("/:id/category", async (req, res) => {
   try {
     const { id } = req.params;
-    if (id === '0') {
+    if (id === "0") {
       const category = await Advertisment.findAll();
       res.json(category);
     } else {
       const category = await Advertisment.findAll({
-        where: { categoryId: id },
+        where: { categoryId: id } 
       });
       if (category.length) {
         res.json(category);
@@ -56,8 +57,8 @@ router.get('/:id/category', async (req, res) => {
       }
     }
   } catch (error) {
-    console.error('Ошибка при получении объявлений по категории:', error);
-    res.status(500).json({ message: 'Ошибка сервера' });
+    console.error("Ошибка при получении объявлений по категории:", error);
+    res.status(500).json({ message: "Ошибка сервера" });
   }
 });
 

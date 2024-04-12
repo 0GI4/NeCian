@@ -14,9 +14,6 @@ module.exports = function AddAdvertisment({ user, categories }) {
             placeholder="Название категории"
             required
           >
-            <option key={3} value={3}>
-              Все категории{" "}
-            </option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
@@ -39,6 +36,7 @@ module.exports = function AddAdvertisment({ user, categories }) {
           />
           <button className="addBtn">SUBMIT</button>
         </form>
+        <p className='errAdvertisment'></p>
       </div>
     )
   );
