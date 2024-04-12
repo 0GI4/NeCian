@@ -11,28 +11,25 @@ const FilterHouse = require('../../components/ui/FilterHouse');
 
 router.get('/', async (req, res) => {
   try {
-    const ads = await Advertisment.findAll({
-      include: [{ model: Like }],
+    const advertisments = await Advertisment.findAll({
+      include: [
+        {
+          model: Like,
+        },
+        {
+          model: Image,
+        },
+      ],
+      order: [['id', 'ASC']],
     });
 
-    const advertisments = await Advertisment.findAll(
-      {
-        include: [
-          {
-            model: Image,
-          },
-        ],
-      },
-      {
-        order: [['id', 'ASC']],
-      }
-    );
     const categories = await Category.findAll();
+
     const document = res.renderComponent(AdsList, {
       title: 'Объявления',
       advertisments,
       categories,
-      ads,
+      ads: advertisments, // Теперь это те же самые объявления с включенными лайками и изображениями
     });
     res.send(document);
   } catch (error) {
