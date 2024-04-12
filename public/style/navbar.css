@@ -1,72 +1,70 @@
 .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #30a8cc; 
-    padding: 20px;
-    border-radius: 0; 
-  
-  .nav .ourLogo {
-    width: 180px;
-    height: auto;
-  }
-  
-  .nav .ourLogo img {
-    width: 100%;
-    height: auto; 
-    background-color: transparent; 
-  }
-  
-  .nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .nav a:hover {
-    background-color: #005b7f;
-    color: #fff;
-  }
-  
-  
-  .ourCompany {
-    background-color: #f0f8ff; 
-    padding: 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-  }
-  
-  .ourCompany p {
-    margin-bottom: 10px; 
-    line-height: 1.5;
-  }
-  
-  .ourCompany .info {
-    display: flex; 
-    align-items: center; 
-  }
-  
-  .ourCompany .info .ourLogo {
-    width: 80px;
-    height: auto; 
-  }
-  
-  .ourCompany .info .ourLogo img {
-    width: 100%; 
-    background-color: transparent; 
-  }
-  
-  .ourCompany .info p {
-    margin: 0; 
-  }
-  
-  .ourCompany .info a {
-    color: #007bff;
-    text-decoration: none; 
-  }
-  
-  .ourCompany .info a:hover {
-    text-decoration: underline; 
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #30a8cc;
+  padding: 20px;
+  border-radius: 0;
+}
+
+.nav .ourLogo {
+  width: 180px;
+  height: auto;
+}
+
+.nav .ourLogo img {
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav a:hover {
+  background-color: #005b7f;
+}
+
+.ourCompany {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ourCompany p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.ourCompany .info {
+  display: flex;
+  align-items: center;
+}
+
+.ourCompany .info .ourLogo {
+  width: 80px;
+  height: auto;
+}
+
+.ourCompany .info .ourLogo img {
+  width: 100%;
+  background-color: transparent;
+}
+
+.ourCompany .info p {
+  margin: 0;
+}
+
+.ourCompany .info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.ourCompany .info a:hover {
+  text-decoration: underline;
 }
