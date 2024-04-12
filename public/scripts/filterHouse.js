@@ -26,7 +26,6 @@ if (form) {
           const imageUrl = ad.Images[0].photo;
           const advertismentCard = `
                <a href="/advertisments/${ad.id}/page">
-              <div class='viewCard'>
               <img src="${imageUrl}"/>
                 <p>${ad.description}</p>
                 <p>${ad.price} ₽</p>
