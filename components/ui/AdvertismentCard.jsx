@@ -2,10 +2,14 @@ const React = require('react');
 
 module.exports = function AdvertismentCard({ advertisment, user }) {
   return (
-    <a href={`/advertisments/${advertisment.id}/page`} className="advertisment-card">
+    <a
+      href={`/advertisments/${advertisment.id}/page`}
+      className="advertisment-card"
+    >
       <div className="advertisment-images">
         {advertisment.Images.map((image, index) => (
           <img
+            className="pageImage"
             key={index}
             src={image.photo}
             alt={`Фото ${index + 1}`}

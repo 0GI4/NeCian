@@ -33,9 +33,11 @@ module.exports = function AdsList({ title, user, advertisments, categories }) {
               <div className={`quantityLikes${advertisement.id}`}>
                 {likeCount}
               </div>
-              <button className="like-button">
-                {isLikedByUser ? '❤️' : '🤍'}
-              </button>
+              {user && (
+                <button className="like-button">
+                  {isLikedByUser ? '❤️' : '🤍'}
+                </button>
+              )}
             </div>
           );
         })}

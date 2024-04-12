@@ -1,9 +1,10 @@
 .ourCompany {
   position: absolute;
   left: 0;
+  padding: 20%;
   bottom: 0px;
   width: 100%;
-  display: fixed;
+  display: block;
   background-color: #f0f8ff;
   padding: 20px;
   border-radius: 10px;
