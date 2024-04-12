@@ -1,72 +1,70 @@
 .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #30a8cc; /* Цвет фона */
-    padding: 20px;
-    border-radius: 0; /* Убираем округления */
-  }
-  
-  .nav .ourLogo {
-    width: 180px; /* Увеличенная ширина логотипа */
-    height: auto; /* Автоматическая высота */
-  }
-  
-  .nav .ourLogo img {
-    width: 100%; /* Полное заполнение контейнера логотипа */
-    height: auto; /* Автоматическая высота */
-    background-color: transparent; /* Убираем фон у изображения */
-  }
-  
-  .nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    transition: background-color 0.3s, color 0.3s; /* Плавное изменение цвета фона и текста при наведении */
-  }
-  
-  .nav a:hover {
-    background-color: #005b7f; /* Цвет фона при наведении */
-    color: #fff; /* Цвет текста при наведении */
-  }
-  
-  /* Стили для контейнера .ourCompany */
-  .ourCompany {
-    background-color: #f0f8ff; /* Голубой цвет фона */
-    padding: 20px; /* Внутренние отступы */
-    border-radius: 10px; /* Закругленные углы */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
-  }
-  
-  .ourCompany p {
-    margin-bottom: 10px; /* Отступ снизу для параграфов */
-    line-height: 1.5; /* Межстрочный интервал */
-  }
-  
-  .ourCompany .info {
-    display: flex; /* Отображение дочерних элементов в ряд */
-    align-items: center; /* Выравнивание по вертикали */
-  }
-  
-  .ourCompany .info .ourLogo {
-    width: 80px; /* Ширина логотипа */
-    height: auto; /* Автоматическая высота */
-  }
-  
-  .ourCompany .info .ourLogo img {
-    width: 100%; /* Полное заполнение контейнера логотипа */
-    background-color: transparent; /* Убираем фон у изображения */
-  }
-  
-  .ourCompany .info p {
-    margin: 0; /* Убираем внешние отступы */
-  }
-  
-  .ourCompany .info a {
-    color: #007bff; /* Цвет ссылки */
-    text-decoration: none; /* Убираем подчеркивание ссылки */
-  }
-  
-  .ourCompany .info a:hover {
-    text-decoration: underline; /* Подчеркиваем ссылку при наведении */
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #30a8cc;
+  padding: 20px;
+  border-radius: 0;
+}
+
+.nav .ourLogo {
+  width: 180px;
+  height: auto;
+}
+
+.nav .ourLogo img {
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav a:hover {
+  background-color: #005b7f;
+}
+
+.ourCompany {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ourCompany p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.ourCompany .info {
+  display: flex;
+  align-items: center;
+}
+
+.ourCompany .info .ourLogo {
+  width: 80px;
+  height: auto;
+}
+
+.ourCompany .info .ourLogo img {
+  width: 100%;
+  background-color: transparent;
+}
+
+.ourCompany .info p {
+  margin: 0;
+}
+
+.ourCompany .info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.ourCompany .info a:hover {
+  text-decoration: underline;
+}
