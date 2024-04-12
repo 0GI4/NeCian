@@ -56,4 +56,26 @@
   color: red; /* Цвет текста сообщения об ошибке */
   margin-top: 10px; /* Отступ сверху для сообщения об ошибке */
 }
+.hidden{
+  visibility: hidden;
+}
+.visible{
+  visibility: visible;
+}
+
+
+.like-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.like-button .bi-heart {
+  font-size: 1.5rem;
+  color: gray; /* Цвет сердечка по умолчанию */
+}
+
+.like-button.liked .bi-heart {
+  color: red; /* Цвет сердечка при лайке от пользователя */
+}
 

@@ -1,28 +1,31 @@
+// В вашем файле Favorites.js
 const React = require('react');
 const Layout = require('../Layout');
 const AdvertismentCard = require('../ui/AdvertismentCard');
-const FilterHouse = require('../ui/FilterHouse');
 
-module.exports = function AdsList({ title, user, advertisments, categories }) {
+module.exports = function Favorites({
+  title,
+  user,
+  advertisments,
+  ads,
+}) {
+  const likedAdvertisments = advertisments.filter(advertisement =>
+    ads.some(ad => ad.id === advertisement.id && ad.Likes.some(like => like.userId === user.id))
+  );
+
   return (
     <Layout title={title} user={user}>
-      <FilterHouse categories={categories} />
-      <div className="advertismentList advertisment-container">
-        {advertisments.map((advertisement) => {
-          const likeCount = advertisement.Likes
-            ? advertisement.Likes.length
-            : 0;
-          // Проверяем, зарегистрирован ли пользователь перед проверкой лайков
-          const isLikedByUser =
-            user &&
-            advertisement.Likes &&
-            advertisement.Likes.some((like) => like.userId === user.id);
+      <div className="advertismentList favorites">
+        {likedAdvertisments.map((advertisement) => {
+          const ad = ads.find((ad) => ad.id === advertisement.id);
+          const likeCount = ad ? ad.Likes.length : 0;
+          const isLikedByUser = ad && ad.Likes.some((like) => like.userId === user.id);
 
           return (
             <div
               key={advertisement.id}
-              data-id={advertisement.id}
               className="card"
+              data-id={advertisement.id}
               style={{ width: '18rem', margin: '20px' }}
             >
               <AdvertismentCard
@@ -33,7 +36,9 @@ module.exports = function AdsList({ title, user, advertisments, categories }) {
               <div className={`quantityLikes${advertisement.id}`}>
                 {likeCount}
               </div>
-              <button className="like-button">
+              <button
+                className="like-button"
+              >
                 {isLikedByUser ? '❤️' : '🤍'}
               </button>
             </div>
