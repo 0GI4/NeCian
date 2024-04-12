@@ -15,16 +15,16 @@ module.exports = function Card({ title, user, advertisment }) {
       <div
         key={advertisment.id}
         data-id={advertisment.id}
-        className="card"
+        className="cardWay"
         style={{ width: '18rem', margin: '20px' }}
       >
         <AdvertismentCard
+        
           key={advertisment.id}
           advertisment={advertisment}
           user={user}
+          className = 'cardPay'
         />
-        <div className={`quantityLikes${advertisment.id}`}>{likeCount}</div>
-        <button className="like-button">{isLikedByUser ? '❤️' : '🤍'}</button>
       </div>
     </Layout>
   );
