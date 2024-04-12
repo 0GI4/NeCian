@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { where } = require('sequelize');
 const AdvertismentCard = require('../../components/ui/AdvertismentCard');
 const {
   User,
@@ -78,8 +79,10 @@ router.get('/:id/category', async (req, res) => {
 });
 
 router.get('/advertisments/:id/page', async (req, res) => {
+  const { id } = req.params;
   try {
     const advertisment = await Advertisment.findOne({
+      where: { id },
       include: [
         {
           model: Like,
