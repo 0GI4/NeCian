@@ -1,0 +1,30 @@
+/* Стили для оболочки карточки */
+.cardWay {
+    width: 18rem;
+    margin: 20px;
+  }
+  
+  /* Стили для содержимого карточки */
+  .cardPay {
+    display: flex;
+  }
+  
+  /* Стили для изображения в карточке */
+  .cardPay img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  /* Стили для описания в карточке */
+  .cardPay .description {
+    padding: 10px;
+  }
+  
+  /* Стили для цены в карточке */
+  .cardPay .price {
+    padding: 10px;
+    margin-left: auto; /* Цена справа */
+    font-weight: bold;
+  }
+  

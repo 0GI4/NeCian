@@ -4,6 +4,7 @@ function AdvertismentCard({ advertisment, user }) {
   let currentImageIndex = 0;
 console.log(advertisment.Images,'77777')
   return (
+
     <div id="advertisment-card-container" className="advertisment-card">
       <div className="advertisment-images">
         <img
@@ -12,6 +13,7 @@ console.log(advertisment.Images,'77777')
           src={advertisment.Images[currentImageIndex].photo}
           alt={`Фото ${currentImageIndex + 1}`}
         />
+
       </div>
       {advertisment.Images.length > 1 && (
         <div className="image-controls">

@@ -56,13 +56,12 @@
   color: red; /* Цвет текста сообщения об ошибке */
   margin-top: 10px; /* Отступ сверху для сообщения об ошибке */
 }
-.hidden{
+.hidden {
   visibility: hidden;
 }
-.visible{
+.visible {
   visibility: visible;
 }
-
 
 .like-button {
   border: none;
@@ -79,3 +78,6 @@
   color: red; /* Цвет сердечка при лайке от пользователя */
 }
 
+.listAdmin {
+  display: flex;
+}
