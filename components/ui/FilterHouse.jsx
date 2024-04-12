@@ -4,7 +4,6 @@ function FilterHouse({ categories }) {
   return (
     <form className="FormFilter">
       <select className="FilterHouse" name="select">
-        <option headers>Выберите категорию</option>
         <option name="drk" value={0}>
           Все категории
         </option>

@@ -1,21 +1,18 @@
 const select = document.querySelector('.FilterHouse');
 const form = document.querySelector('.FormFilter');
+const advertismentsContainer = document.querySelector('.advertisment-container');
 
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const categoryId = select.value;
-    console.log(categoryId);
 
     try {
       const res = await fetch(`/ads/${categoryId}/category`);
       const advertisments = await res.json();
 
       if (advertisments && advertisments.length > 0) {
-        const advertismentsContainer = document.querySelector(
-          '.advertisment-container'
-        );
         advertismentsContainer.innerHTML = '';
 
         advertisments.forEach((ad) => {
@@ -24,10 +21,11 @@ if (form) {
           card.setAttribute('data-id', ad.id);
           card.style.width = '18rem';
           card.style.margin = '20px';
-
+          
+          const imageUrl = ad.Images[0].photo
           const advertismentCard = `
-              <div class = 'viewCard'>
-                <h5>${ad.image}</h5>
+              <div class='viewCard'>
+              <img src="${imageUrl}"/>
                 <p>${ad.description}</p>
                 <p>${ad.price} ₽</p>
               </div>
