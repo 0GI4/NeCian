@@ -1,8 +1,8 @@
-const React = require("react");
+const React = require('react');
 
 module.exports = function AdvertismentCard({ advertisment, user }) {
   return (
-    <a href={`/advertisments/${advertisment.id}`}>
+    <a href={`/advertisments/${advertisment.id}/page`}>
       <img src={advertisment.Images[0].photo} />
       <p className={`price${advertisment.id}`}>{advertisment.price} ₽</p>
       <h2>
