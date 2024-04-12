@@ -24,7 +24,7 @@ if (form) {
           
           const imageUrl = ad.Images[0].photo
           const advertismentCard = `
-              <div class='viewCard'>
+              <div>
               <img src="${imageUrl}"/>
                 <p>${ad.description}</p>
                 <p>${ad.price} ₽</p>
