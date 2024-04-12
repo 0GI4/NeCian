@@ -7,8 +7,8 @@ const apiAdminRouter = require('./api/adminApi.routes');
 const authRouter = require('./views/auth.routes');
 const favoritesRouter = require('./views/favorites.routes');
 const likesRouter = require('./api/like.routes');
-/*
-const Router404 = require('./views/router404.routes'); */
+
+const Router404 = require('./views/router404.routes'); 
 
 router.use('/', mainRouter);
 router.use('/ads', adsRouter)
@@ -18,7 +18,7 @@ router.use('/api/admin', apiAdminRouter);
 router.use('/admin', adminRouter);
 router.use('/favorites', favoritesRouter);
 router.use('/api/likes', likesRouter);
-/* router.use('*', Router404);
+ router.use('*', Router404);
 router.use('/404', Router404);
- */
+ 
 module.exports = router;
