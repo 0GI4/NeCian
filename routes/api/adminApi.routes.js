@@ -1,9 +1,9 @@
-const router = require("express").Router();
-const { Advertisment, Image } = require("../../db/models");
-const AdvertismentCard = require("../../components/ui/AdvertismentCard");
-const fileupload = require("../../utils/fileupload");
+const router = require('express').Router();
+const { Advertisment, Image } = require('../../db/models');
+const AdvertismentCard = require('../../components/ui/AdvertismentCard');
+const fileupload = require('../../utils/fileupload');
 
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const value = await Advertisment.destroy({
@@ -12,17 +12,17 @@ router.delete("/:id", async (req, res) => {
       },
     });
     if (value) {
-      res.status(200).json({ message: "Success" });
+      res.status(200).json({ message: 'Success' });
     } else {
-      res.status(404).json({ message: "Failed" });
+      res.status(404).json({ message: 'Failed' });
     }
   } catch (error) {
-    console.error("Ошибка при удалении объявления:", error);
-    res.status(500).json({ message: "Внутренняя ошибка сервера" });
+    console.error('Ошибка при удалении объявления:', error);
+    res.status(500).json({ message: 'Внутренняя ошибка сервера' });
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { description, price } = req.body;
@@ -30,25 +30,24 @@ router.put("/:id", async (req, res) => {
       { description, price },
       { where: { id } }
     );
-
     if (updated) {
-      res.status(200).json({ message: "ok" });
+      res.status(200).json({ message: 'ok' });
     } else {
-      res.status(404).json({ message: "Объявление не найдено" });
+      res.status(404).json({ message: 'Объявление не найдено' });
     }
   } catch (error) {
-    console.error("Ошибка при обновлении объявления:", error);
-    res.status(500).json({ message: "Внутренняя ошибка сервера" });
+    console.error('Ошибка при обновлении объявления:', error);
+    res.status(500).json({ message: 'Внутренняя ошибка сервера' });
   }
 });
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { categoryId, price, description } = req.body;
     let files = req.files ? req.files.url : null;
 
     if (!categoryId.trim() || !price.trim() || !description.trim() || !files) {
-      res.json({ message: "Заполните, пожалуйста, все поля" });
+      res.json({ message: 'Заполните, пожалуйста, все поля' });
     }
 
     const advertisment = await Advertisment.create({
@@ -83,10 +82,10 @@ router.post("/", async (req, res) => {
       { advertisment: advertismentWithImages },
       { doctype: false }
     );
-    res.json({ html, message: "success" });
+    res.json({ html, message: 'success' });
   } catch (error) {
-    console.error("Ошибка при создании объявления:", error);
-    res.status(500).json({ message: "Внутренняя ошибка сервера" });
+    console.error('Ошибка при создании объявления:', error);
+    res.status(500).json({ message: 'Внутренняя ошибка сервера' });
   }
 });
 

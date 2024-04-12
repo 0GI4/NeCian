@@ -1,23 +1,36 @@
 const React = require('react');
 
-module.exports = function AdvertismentCard({ advertisment, user }) {
+function AdvertismentCard({ advertisment, user }) {
+  let currentImageIndex = 0;
+console.log(advertisment.Images,'77777')
   return (
-    <a href={`/advertisments/${advertisment.id}`} className="advertisment-card">
+    <div id="advertisment-card-container" className="advertisment-card">
       <div className="advertisment-images">
-        {advertisment.Images.map((image, index) => (
-          <img
-            key={index}
-            src={image.photo}
-            alt={`Фото ${index + 1}`}
-          />
-        ))}
+        <img
+          className="adsImage"
+          data-id={currentImageIndex}
+          src={advertisment.Images[currentImageIndex].photo}
+          alt={`Фото ${currentImageIndex + 1}`}
+        />
       </div>
-      <p className={`price${advertisment.id}`}>{advertisment.price} ₽</p>
+      {advertisment.Images.length > 1 && (
+        <div className="image-controls">
+          <button className="back">Назад</button>
+          <button className="next">Вперед</button>
+        </div>
+      )}
+      <p className={`price${advertisment.id}`}>
+        {advertisment.price}
+        {' '}
+        ₽
+      </p>
       <h2>
         <em className={`description${advertisment.id}`}>
           {advertisment.description}
         </em>
       </h2>
-    </a>
+    </div>
   );
-};
+}
+
+module.exports = AdvertismentCard;

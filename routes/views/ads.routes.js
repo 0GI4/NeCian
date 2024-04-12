@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
       ],
       order: [['id', 'ASC']],
     });
-
+    
     const categories = await Category.findAll();
 
     const document = res.renderComponent(AdsList, {

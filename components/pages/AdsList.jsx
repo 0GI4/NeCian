@@ -4,6 +4,7 @@ const AdvertismentCard = require('../ui/AdvertismentCard');
 const FilterHouse = require('../ui/FilterHouse');
 
 module.exports = function AdsList({ title, user, advertisments, categories }) {
+
   return (
     <Layout title={title} user={user}>
       <FilterHouse categories={categories} />
