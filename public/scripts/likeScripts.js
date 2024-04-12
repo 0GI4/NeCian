@@ -15,14 +15,16 @@ if (list) {
           method: 'PUT',
         });
         const data = await response.json();
-        if (data.message === 'Лайк отменен' && listFav) {
+        if (data.message === 'Лайк отменен') {
           if (likeCountElement) {
             likeCountElement.innerHTML =
               parseInt(likeCountElement.innerHTML) - 1;
           }
 
           event.target.innerText = '🤍';
-          card.remove();
+          if (listFav) {
+            card.remove();
+          }
         } else if (data.message === 'Лайк добавлен') {
           if (likeCountElement) {
             likeCountElement.innerHTML =
