@@ -1,10 +1,8 @@
 const listAdmin = document.querySelector('.listAdmin');
-const addAdvertismentForm = document.querySelector('.addAdvertismentForm')
-
+const addAdvertismentForm = document.querySelector('.addAdvertismentForm');
 
 if (listAdmin) {
   listAdmin.addEventListener('click', async (e) => {
-    console.log(1);
     if (e.target.classList.contains('updateBtn')) {
       const form = document.querySelector(`.formUpdate${e.target.dataset.id}`);
       form.classList.toggle('hidden');
@@ -44,6 +42,7 @@ if (listAdmin) {
     if (e.target.classList.contains('del')) {
       try {
         const card = e.target.closest('.card');
+        console.log(card.dataset);
         const cardId = card.dataset.id;
         const del = confirm('Вы точно хотите удалить объявление');
         if (del) {
@@ -60,12 +59,4 @@ if (listAdmin) {
       }
     }
   });
-}
-
-
-if (addAdvertismentForm) {
-  addAdvertismentForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const { category, price,  }
-  })
 }

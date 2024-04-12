@@ -1,15 +1,22 @@
+// В вашем файле Favorites.js
 const React = require('react');
 const Layout = require('../Layout');
 const AdvertismentCard = require('../ui/AdvertismentCard');
-const FilterHouse = require('../ui/FilterHouse');
 
+module.exports = function Favorites({
+  title,
+  user,
+  advertisments,
+  ads,
+}) {
+  const likedAdvertisments = advertisments.filter(advertisement =>
+    ads.some(ad => ad.id === advertisement.id && ad.Likes.some(like => like.userId === user.id))
+  );
 
-module.exports = function AdsList({ title, user, advertisments, categories, ads }) {
   return (
     <Layout title={title} user={user}>
-      <FilterHouse categories={categories} />
-      <div className="advertismentList advertisment-container">
-        {advertisments.map((advertisement) => {
+      <div className="advertismentList favorites">
+        {likedAdvertisments.map((advertisement) => {
           const ad = ads.find((ad) => ad.id === advertisement.id);
           const likeCount = ad ? ad.Likes.length : 0;
           const isLikedByUser = ad && ad.Likes.some((like) => like.userId === user.id);
@@ -17,8 +24,8 @@ module.exports = function AdsList({ title, user, advertisments, categories, ads 
           return (
             <div
               key={advertisement.id}
-              data-id={advertisement.id}
               className="card"
+              data-id={advertisement.id}
               style={{ width: '18rem', margin: '20px' }}
             >
               <AdvertismentCard

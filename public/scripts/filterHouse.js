@@ -6,6 +6,7 @@ if (form) {
     e.preventDefault();
 
     const categoryId = select.value;
+    console.log(categoryId);
 
     try {
       const res = await fetch(`/ads/${categoryId}/category`);
