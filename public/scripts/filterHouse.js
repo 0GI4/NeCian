@@ -1,6 +1,8 @@
 const select = document.querySelector('.FilterHouse');
 const form = document.querySelector('.FormFilter');
-const advertismentsContainer = document.querySelector('.advertisment-container');
+const advertismentsContainer = document.querySelector(
+  '.advertisment-container'
+);
 
 if (form) {
   form.addEventListener('submit', async (e) => {
@@ -21,14 +23,15 @@ if (form) {
           card.setAttribute('data-id', ad.id);
           card.style.width = '18rem';
           card.style.margin = '20px';
-          
-          const imageUrl = ad.Images[0].photo
+          const imageUrl = ad.Images[0].photo;
           const advertismentCard = `
+               <a href="/advertisments/${ad.id}/page">
               <div class='viewCard'>
               <img src="${imageUrl}"/>
                 <p>${ad.description}</p>
                 <p>${ad.price} ₽</p>
               </div>
+              </a>
             `;
 
           card.innerHTML = advertismentCard;
