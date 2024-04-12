@@ -71,7 +71,6 @@
 .advertismentList.favorites {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 /* Стили для ссылок */
